@@ -116,6 +116,109 @@
             color: white;
             font-weight: bold;
         }
+        
+        .unlocked {
+            background-color: #e9f7e0;
+            border-color: #58cc02;
+            border-width: 2px;
+            border-style: solid;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .unlocked::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 150%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0) 0%, 
+                rgba(255,255,255,0.4) 50%, 
+                rgba(255,255,255,0) 100%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { left: -150%; }
+            100% { left: 150%; }
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.8);
+        }
+        
+        .unlocked .sparkle:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation: sparkle-animation 4s infinite 0.5s;
+        }
+        
+        .unlocked .sparkle:nth-child(2) {
+            top: 60%;
+            left: 25%;
+            animation: sparkle-animation 4s infinite 1s;
+        }
+        
+        .unlocked .sparkle:nth-child(3) {
+            top: 40%;
+            left: 70%;
+            animation: sparkle-animation 4s infinite 1.5s;
+        }
+        
+        .unlocked .sparkle:nth-child(4) {
+            top: 15%;
+            left: 90%;
+            animation: sparkle-animation 4s infinite 2s;
+        }
+        
+        .unlocked .sparkle:nth-child(5) {
+            top: 80%;
+            left: 50%;
+            animation: sparkle-animation 4s infinite 2.5s;
+        }
+        
+        @keyframes sparkle-animation {
+            0% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0); }
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        .status-unlocked {
+            color: #2b8501;
+            background-color: #e9f7e0;
+        }
+        
+        .status-blocked {
+            color: #ff4b4b;
+            background-color: #ffebeb;
+        }
+        
+        .celebration {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -125,21 +228,21 @@
         <p>Este certificado reconhece a incrível dedicação de</p>
         <div class="achievement">MEU CUNHADO KEYVID</div>
         <p>por completar</p>
-        <div class="achievement">134 DIAS CONSECUTIVOS</div>
+        <div class="achievement">164 DIAS CONSECUTIVOS</div>
         <p>de aprendizado no Duolingo</p>
-        <div class="reward">Recompensa: R$ 134,00</div>
+        <div class="reward">Recompensa: R$ 184,00</div>
     </div>
     
     <div class="level-up">
         <div class="progress-container" style="margin: 30px 0;">
-            <p style="text-align: center; margin-bottom: 5px;"><strong>134 dias</strong> de <strong>1000+ dias</strong> possíveis</p>
+            <p style="text-align: center; margin-bottom: 5px;"><strong>164 dias</strong> de <strong>1000+ dias</strong> possíveis</p>
 
             <div style="display: flex; align-items: center; margin-bottom: 8px;">
                 <div style="flex-grow: 1; background-color: #e0e0e0; border-radius: 20px; height: 30px; position: relative; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);">
-                    <div style="background: linear-gradient(90deg, #58cc02 0%, #76cf2d 100%); height: 100%; border-radius: 20px; width: 5%;"></div>
+                    <div style="background: linear-gradient(90deg, #58cc02 0%, #76cf2d 100%); height: 100%; border-radius: 20px; width: 7%;"></div>
                 </div>
                 <div style="margin-left: 12px; font-weight: bold; background-color: #58cc02; color: white; padding: 5px 10px; border-radius: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
-                    5%
+                    7%
                 </div>
             </div>
             
@@ -165,11 +268,28 @@
             <p><strong>❓</strong></p>
         </div>
         
-        <div class="feature">
-            <h3>🌎 Idioma Adicional</h3>
-            <p><strong style="color: #ff4b4b; background-color: #ffebeb; padding: 3px 8px; border-radius: 4px;">❓ BLOQUEADO - (desbloqueie em 30 dias)</strong></p>
-            <p>Continue sua sequência para desbloquear a possibilidade de adicionar um segundo idioma!</p>
-            <p><strong>Recompensa Futura:</strong> + R$ 1,00 por dia para cada idioma extra (máximo: 1 idioma extra)</p>
+        <div class="feature unlocked">
+            <h3>🌎 Idioma Adicional (disponível por tempo limitado)</h3>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <p><strong class="status-badge status-unlocked">✅ DESBLOQUEADO!</strong></p>
+            <p>Parabéns! Você agora pode adicionar um segundo idioma à sua jornada de aprendizado!</p>
+            <p><strong>Recompensa Ativada:</strong> + R$ 1,00 por dia para seu idioma extra (máximo: 1 idioma extra)</p>
+            <p style="font-style: italic; color: #2b8501;">Escolha sabiamente seu novo idioma e comece a acumular ainda mais recompensas!</p>
+        </div>
+        
+        <div class="feature" style="background-color: #f0f0f0; border-style: dashed; border-color: #aaa; border-width: 2px; border-left-width: 5px; opacity: 0.8;">
+            <h3 style="color: #777;">❓ Próxima caixa ❓</h3>
+            <p style="text-align: center; font-size: 32px; margin: 15px 0; color: #999;">❓ ❓ ❓</p>
+            <p style="color: #777; font-style: italic; text-align: center;">Conquista bloqueada</p>
+            <p style="color: #777; text-align: center;">Continue sua jornada para descobrir...</p>
+            <div style="width: 100%; height: 20px; background-color: #ddd; border-radius: 10px; position: relative; overflow: hidden; margin-top: 15px;">
+                <div style="position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: repeating-linear-gradient(45deg, #ccc, #ccc 10px, #bbb 10px, #bbb 20px);"></div>
+                <p style="position: absolute; width: 100%; text-align: center; margin: 0; line-height: 20px; color: #777; font-weight: bold; font-size: 12px;">0%</p>
+            </div>
         </div>
         
         <div class="bonus">
